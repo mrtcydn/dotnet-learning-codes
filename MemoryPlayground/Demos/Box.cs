@@ -6,6 +6,6 @@ namespace MemoryPlayground.Demos
 {
     internal class Box
     {
-        float cornerSize;
+        public int Value { get; set; }
     }
 }

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace MemoryPlayground.Demos
 {
-    internal class PointStruct
+    internal struct PointStruct
     {
-        float x;
-        float y;
+        public float X {  get; set; }
+        public float Y { get; set; }
     }
 }

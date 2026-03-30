@@ -6,6 +6,7 @@ namespace MemoryPlayground.Demos
 {
     internal class Person
     {
-        int age;
+        public string Name { get; set; } = "";
+        public int Age { get; set; }
     }
 }
