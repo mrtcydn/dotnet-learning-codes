@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="CSharpLearning/CSharpLearning.csproj" />
+  <Project Path="FileLoggerApp/FileLoggerApp.csproj" Id="33c3c43b-fcf0-4ade-8aa8-c504a16a0b93" />
   <Project Path="MemoryPlayground/MemoryPlayground.csproj" Id="5905eac3-551a-4338-88f3-01146ec8dce6" />
   <Project Path="StackHeapDemo/StackHeapDemo.csproj" Id="bf1df7ab-ce78-4549-a637-fa55a7d24737" />
 </Solution>
