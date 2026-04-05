@@ -107,13 +107,13 @@ namespace TaskManagerCLI
                 return;
             }
 
-            foreach (var item in manager.GetAllTasks())
+            foreach (var task in manager.GetAllTasks())
             {
-                Console.WriteLine($"ID: {item.Id} " +
-                    $"| Title: {item.Title} " +
-                    $"| Description: {item.Description} " +
-                    $"| Completed: {item.IsCompleted} " +
-                    $"| Created At: {item.CreatedAt}");
+                Console.WriteLine($"ID: {task.Id} " +
+                    $"| Title: {task.Title} " +
+                    $"| Description: {task.Description} " +
+                    $"| Completed: {task.IsCompleted} " +
+                    $"| Created At: {task.CreatedAt}");
             }
             Pause();
         }
@@ -131,13 +131,13 @@ namespace TaskManagerCLI
                 return;
             }
 
-            foreach (var item in manager.GetAllTasks())
+            foreach (var task in manager.GetAllTasks())
             {
-                Console.WriteLine($"ID: {item.Id} " +
-                    $"| Title: {item.Title} " +
-                    $"| Description: {item.Description} " +
-                    $"| Completed: {item.IsCompleted} " +
-                    $"| Created At: {item.CreatedAt}");
+                Console.WriteLine($"ID: {task.Id} " +
+                    $"| Title: {task.Title} " +
+                    $"| Description: {task.Description} " +
+                    $"| Completed: {task.IsCompleted} " +
+                    $"| Created At: {task.CreatedAt}");
             }
 
             Console.WriteLine();
@@ -156,32 +156,41 @@ namespace TaskManagerCLI
             Console.WriteLine("=== UPDATE TASK MENU ===");
             Console.WriteLine();
 
-            if (manager.GetAllTasks().Count == 0)
+            var tasks = manager.GetAllTasks();
+
+            if (tasks.Count == 0)
             {
                 Console.WriteLine("No tasks found.");
                 Pause();
                 return;
             }
 
-            foreach (var item in manager.GetAllTasks())
+            foreach (var task in tasks)
             {
-                Console.WriteLine($"ID: {item.Id} " +
-                    $"| Title: {item.Title} " +
-                    $"| Description: {item.Description} " +
-                    $"| Completed: {item.IsCompleted} " +
-                    $"| Created At: {item.CreatedAt}");
+                Console.WriteLine($"ID: {task.Id} " +
+                    $"| Title: {task.Title} " +
+                    $"| Description: {task.Description} " +
+                    $"| Completed: {task.IsCompleted} " +
+                    $"| Created At: {task.CreatedAt}");
             }
 
             Console.WriteLine();
             int id = InputHelper.ReadRequiredInt("Enter task ID to update: ");
 
+            var foundedTask = tasks.FirstOrDefault(task => task.Id == id);
+
+            if (foundedTask == null)
+            {
+                Console.WriteLine($"Task with ID {id} not found.");
+                Pause();
+                return;
+            }
+
             string title = InputHelper.ReadRequiredText("Enter new task title: ");
             string description = InputHelper.ReadRequiredText("Enter new task description: ");
 
-            bool isTaskUpdated = manager.UpdateTask(id, title, description);
-            Console.WriteLine(isTaskUpdated 
-                ? $"Task with ID {id} updated successfully." 
-                : $"Task with ID {id} not found");
+            manager.UpdateTask(id, title, description);
+            Console.WriteLine($"Task with ID {id} updated successfully.");
             Pause();
         }
 
@@ -198,13 +207,13 @@ namespace TaskManagerCLI
                 return;
             }
 
-            foreach (var item in manager.GetAllTasks())
+            foreach (var task in manager.GetAllTasks())
             {
-                Console.WriteLine($"ID: {item.Id} " +
-                    $"| Title: {item.Title} " +
-                    $"| Description: {item.Description} " +
-                    $"| Completed: {item.IsCompleted} " +
-                    $"| Created At: {item.CreatedAt}");
+                Console.WriteLine($"ID: {task.Id} " +
+                    $"| Title: {task.Title} " +
+                    $"| Description: {task.Description} " +
+                    $"| Completed: {task.IsCompleted} " +
+                    $"| Created At: {task.CreatedAt}");
             }
 
             Console.WriteLine();
